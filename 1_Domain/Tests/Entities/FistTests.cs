@@ -1,4 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Mimir.Domain.Test.Entities
 {
@@ -46,8 +49,190 @@ namespace Mimir.Domain.Test.Entities
         [TestMethod]
         public void Validar_Primeiro_Teste()
         {
-            EntidadeTeste entidadeTeste = new EntidadeTeste();
-            Assert.AreEqual(true, true);
+            //EntidadeTeste entidadeTeste = new EntidadeTeste();
+            //Assert.AreEqual(true, true);
+            //Leilão
+            var davi = new Usuario("Davi");
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(davi, 300.00));
+            Assert.AreEqual(leilaoPlaystation.Lances.Count, 1);
         }
+        [TestMethod]
+        public void Validar_Segundo_Teste()
+        {
+            //Leilão
+            var davi = new Usuario("Davi");
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(davi, 300.00));
+            leilaoPlaystation.ProporLance(new Lance(davi, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(davi, 200.00));
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avaliar(leilaoPlaystation);
+            Assert.AreEqual(leiloeiro.MaiorLance, 300.00);
+        }
+        [TestMethod]
+        public void Validar_Terceiro_Teste()
+        {
+            //EntidadeTeste entidadeTeste = new EntidadeTeste();
+            //Assert.AreEqual(true, true);
+            //Leilão
+            var davi = new Usuario("Davi");
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(davi, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(davi, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(davi, 300.00));
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avaliar(leilaoPlaystation);
+            Assert.AreEqual(leiloeiro.MaiorLance, 300.00);
+        }
+        [TestMethod]
+        public void Validar_Quarto_Teste()
+        {
+            //EntidadeTeste entidadeTeste = new EntidadeTeste();
+            //Assert.AreEqual(true, true);
+            //Leilão
+            var davi = new Usuario("Davi");
+            var bruno = new Usuario("Bruno");
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(davi, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(davi, 300.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 350.00));
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avaliar(leilaoPlaystation);
+            Assert.AreEqual(leiloeiro.MaiorLance, 350.00);
+        }
+        [TestMethod]
+        public void Validar_UsuarioVencedorLeilaoCrescente_Teste()
+        {
+            var davi = new Usuario("Davi");
+            var bruno = new Usuario("Bruno");
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(davi, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(davi, 300.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 350.00));
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avaliar(leilaoPlaystation);
+            Assert.AreEqual(leiloeiro.VencedorLance, bruno);
+        }
+        [TestMethod]
+        public void Validar_UsuarioVencedorLeilaoInternet_Teste()
+        {
+            var joao = new Usuario("Joao");
+            var bruno = new Usuario("Bruno");
+            var lucas = new Usuario("Lucas");
+
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(joao, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(joao, 400.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 325.00));
+            leilaoPlaystation.ProporLance(new Lance(joao, 300.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 350.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 350.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 500.00));
+            leilaoPlaystation.ProporLance(new Lance(joao, 150.00));
+
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avaliar(leilaoPlaystation);
+            Assert.AreEqual(leiloeiro.VencedorLance, lucas);
+        }
+        [TestMethod]
+        public void Validar_UsuarioVencedorLeilaoInternetContador_Teste()
+        {
+            var joao = new Usuario("Joao");
+            var bruno = new Usuario("Bruno");
+            var lucas = new Usuario("Lucas");
+
+            var leilaoPlaystation = new Leilao("Playstation");
+            leilaoPlaystation.ProporLance(new Lance(joao, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(joao, 400.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 325.00));
+            leilaoPlaystation.ProporLance(new Lance(joao, 300.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 350.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 350.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 200.00));
+            leilaoPlaystation.ProporLance(new Lance(bruno, 250.00));
+            leilaoPlaystation.ProporLance(new Lance(lucas, 500.00));
+            leilaoPlaystation.ProporLance(new Lance(joao, 150.00));
+
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avaliar(leilaoPlaystation);
+            Assert.AreEqual(leilaoPlaystation.Lances.Count, 8);
+        }
+
+    }
+    public class Usuario
+    {
+        public Usuario(string nome)
+        {
+            Nome = nome;
+        }
+        public string Nome { get; private set; }
+    }
+
+    public class Lance
+    {
+        public Lance(Usuario usuario, double valor)
+        {
+            Valor = valor;
+            Usuario = usuario;
+        }
+        public double Valor { get; private set; }
+        public Usuario Usuario { get; private set; }
+    }
+
+    public class Leilao
+    {
+        public Leilao(string descricao)
+        {
+            Descricao = descricao;
+            Lances = new List<Lance>();
+
+        }
+        public string Descricao { get; private set; }
+
+        public List<Lance> Lances { get; private set; }
+
+        public void ProporLance(Lance lance)
+        {
+            if (Lances.Any())
+            {
+                if (!Lances.Where(x => x.Valor == lance.Valor).Any())
+                {
+                    Lances.Add(lance);
+                }
+            }
+            else
+            {
+                Lances.Add(lance);
+            }
+        }
+    }
+    public class Avaliador
+    {
+        private double MaiorDeTodos = double.MinValue;
+        private Usuario Vencedor;
+
+        public void Avaliar(Leilao leilao)
+        {
+            foreach (var lance in leilao.Lances)
+            {
+                if (lance.Valor > MaiorDeTodos)
+                {
+                    MaiorDeTodos = lance.Valor;
+                    Vencedor = lance.Usuario;
+                }
+            }
+        }
+
+        public double MaiorLance { get { return MaiorDeTodos; } }
+        public Usuario VencedorLance { get { return Vencedor; } }
     }
 }

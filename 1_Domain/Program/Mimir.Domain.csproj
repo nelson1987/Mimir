@@ -59,6 +59,11 @@
     <Compile Include="Entities\Serie.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Vilao.cs" />
+    <Compile Include="Entities\WebForLink\CadastradoSolicitacao.cs" />
+    <Compile Include="Entities\WebForLink\Fornecedor.cs" />
+    <Compile Include="Entities\WebForLink\Program.cs" />
+    <Compile Include="Entities\WebForLink\Solicitacao.cs" />
+    <Compile Include="Entities\WebForLink\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
