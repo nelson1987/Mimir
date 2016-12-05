@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mimir.Domain.Entities
+﻿namespace Mimir.Domain.Entities
 {
-    class Comentario
+    public class Comentario
     {
+        public Comentario(Usuario autor, string texto)
+        {
+            Autor = autor;
+            Texto = texto;
+        }
+
+        public Usuario Autor { get; private set; }
+
+        public string Texto { get; private set; }
     }
 }

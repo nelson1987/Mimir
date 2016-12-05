@@ -8,9 +8,10 @@ namespace Mimir.Domain.Entities
         {
 
         }
+        public string Nome { get; private set; }
 
-        public List<Serie> Series { get; set; }
+        public List<Serie> Series { get; private set; }
 
-        public List<Filme> Filmes { get; set; }
+        public List<Filme> Filmes { get; private set; }
     }
 }

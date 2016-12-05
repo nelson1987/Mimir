@@ -57,6 +57,7 @@
     <Compile Include="Entities\Produtor.cs" />
     <Compile Include="Entities\Resenha.cs" />
     <Compile Include="Entities\Serie.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Vilao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
