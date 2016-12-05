@@ -41,6 +41,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntidadeTeste.cs" />
+    <Compile Include="Entities\Ator.cs" />
+    <Compile Include="Entities\Comentario.cs" />
+    <Compile Include="Entities\Desenhista.cs" />
+    <Compile Include="Entities\Diretor.cs" />
+    <Compile Include="Entities\Editora.cs" />
+    <Compile Include="Entities\Escritor.cs" />
+    <Compile Include="Entities\Filme.cs" />
+    <Compile Include="Entities\GraphicNovel.cs" />
+    <Compile Include="Entities\GrupoHerois.cs" />
+    <Compile Include="Entities\Heroi.cs" />
+    <Compile Include="Entities\HistoriaQuadrinho.cs" />
+    <Compile Include="Entities\Livro.cs" />
+    <Compile Include="Entities\Noticia.cs" />
+    <Compile Include="Entities\Produtor.cs" />
+    <Compile Include="Entities\Resenha.cs" />
+    <Compile Include="Entities\Serie.cs" />
+    <Compile Include="Entities\Vilao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
