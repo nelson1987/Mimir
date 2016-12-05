@@ -4,13 +4,15 @@ namespace Mimir.Domain.Entities
 {
     public class Serie
     {
-        public Serie()
+        public Serie(string nome)
         {
-
+            Nome = nome;
         }
 
-        public List<Ator> Atores { get; set; }
+        public string Nome { get; private set; }
 
-        public Resenha Resenha { get; set; }
+        public List<Ator> Atores { get; private set; }
+
+        public Resenha Resenha { get; private set; }
     }
 }
