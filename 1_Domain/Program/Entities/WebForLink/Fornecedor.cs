@@ -6,9 +6,10 @@ namespace Mimir.Domain.Entities.WebForLink
     {
         public Fornecedor(string documento)
         {
-
+            Documento = documento;
         }
 
+        public string Documento { get; set; }
         public List<Solicitacao> Solicitacoes { get; set; }
     }
 }
